@@ -3,6 +3,11 @@ kind: GitRepo
 metadata:
   name: harvesterpoc
   namespace: fleet-local
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: harvesterpoc
+    meta.helm.sh/release-namespace: fleet-local
 spec:
   repo: https://github.com/SantoDE/harvesterpoc
   branch: main
