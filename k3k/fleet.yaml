@@ -1,4 +1,4 @@
-namespace: k3k-system
+defaultNamespace: k3k-system
 
 helm:
   repo: https://rancher.github.io/k3k
