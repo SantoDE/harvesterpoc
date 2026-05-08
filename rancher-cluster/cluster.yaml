@@ -16,6 +16,8 @@ spec:
     ingresses:
       enabled: true
   addons:
+    - secretRef: coredns-addon
+      secretNamespace: k3k-rancher
     - secretRef: cert-manager-addon
       secretNamespace: k3k-rancher
     - secretRef: rancher-addon
