@@ -1,0 +1,10 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: harvesterpoc
+  namespace: fleet-local
+spec:
+  repo: https://github.com/SantoDE/harvesterpoc
+  branch: main
+  targets:
+    - clusterSelector: {}
