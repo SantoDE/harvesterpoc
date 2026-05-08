@@ -1,0 +1,14 @@
+apiVersion: k3k.io/v1beta1
+kind: Cluster
+metadata:
+  name: rancher
+  namespace: k3k-rancher
+spec:
+  mode: shared
+  servers: 1
+  expose:
+    nodePort:
+      serverPort: 30443
+  tlsSANs:
+    - 51.38.122.162
+    - 51.195.5.176
