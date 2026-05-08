@@ -1,0 +1,8 @@
+namespace: k3k-system
+
+helm:
+  repo: https://rancher.github.io/k3k
+  chart: k3k
+  releaseName: k3k
+  valuesFiles:
+    - values.yaml
