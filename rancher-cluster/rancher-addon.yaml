@@ -20,3 +20,4 @@ stringData:
         hostname: rancher.51.38.122.161.sslip.io
         bootstrapPassword: admin
         replicas: 1
+        priorityClassName: ""
