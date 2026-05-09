@@ -17,7 +17,9 @@ stringData:
       targetNamespace: cattle-system
       createNamespace: true
       valuesContent: |-
-        hostname: rancher.51.38.122.161.sslip.io
+        hostname: rancher.51.38.122.162.sslip.io
+        ingress:
+          ingressClassName: traefik
         bootstrapPassword: admin
         replicas: 1
         priorityClassName: ""
