@@ -4,7 +4,7 @@ metadata:
   name: rancher
   namespace: k3k-rancher
 spec:
-  mode: virtual
+  mode: shared
   servers: 1
   expose:
     nodePort:
@@ -12,10 +12,16 @@ spec:
   tlsSANs:
     - 51.38.122.162
     - 51.195.5.176
+  sync:
+    ingresses:
+      enabled: true
+    configMaps:
+      enabled: false
+  persistence:
+    storageClassName: harvester-longhorn
+    storageRequestSize: 5G
   addons:
     - secretRef: cert-manager-addon
-      secretNamespace: k3k-rancher
-    - secretRef: traefik-addon
       secretNamespace: k3k-rancher
     - secretRef: rancher-addon
       secretNamespace: k3k-rancher
