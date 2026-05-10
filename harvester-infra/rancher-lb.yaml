@@ -6,7 +6,7 @@ metadata:
 spec:
   workloadType: vm
   ipam: pool
-  ipPool: public-ip-pool
+  ipPool: rancher-ip-pool
   listeners:
     - name: https
       port: 443
