@@ -1,4 +1,4 @@
-apiVersion: networking.harvesterhci.io/v1beta1
+apiVersion: loadbalancer.harvesterhci.io/v1beta1
 kind: IPPool
 metadata:
   name: public-ip-pool
