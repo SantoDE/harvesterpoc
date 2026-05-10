@@ -80,7 +80,10 @@ spec:
                           addresses:
                             - 8.8.8.8
                             - 1.1.1.1
+            packages:
+              - qemu-guest-agent
             runcmd:
+              - systemctl enable --now qemu-guest-agent
               - netplan apply
               - curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--tls-san=51.38.122.163 --write-kubeconfig-mode=644" sh -
               - until kubectl get nodes | grep -q " Ready"; do sleep 5; done
