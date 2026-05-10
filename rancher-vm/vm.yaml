@@ -93,4 +93,20 @@ spec:
               - KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
               - KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm repo update
               - KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm install rancher rancher-latest/rancher -n cattle-system --create-namespace --set hostname=rancher.51.38.122.163.sslip.io --set bootstrapPassword=admin --set replicas=1
+              - until KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl get crd gitrepos.fleet.cattle.io 2>/dev/null; do sleep 10; done
+              - |
+                KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl apply -f - <<GITREPO
+                apiVersion: fleet.cattle.io/v1alpha1
+                kind: GitRepo
+                metadata:
+                  name: harvesterpoc
+                  namespace: fleet-local
+                spec:
+                  repo: https://github.com/SantoDE/harvesterpoc
+                  branch: main
+                  paths:
+                    - rancher-capi
+                  targets:
+                    - clusterSelector: {}
+                GITREPO
         name: cloudinit
