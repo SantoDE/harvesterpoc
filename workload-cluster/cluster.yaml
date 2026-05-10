@@ -1,0 +1,66 @@
+apiVersion: rke-machine-config.cattle.io/v1
+kind: HarvesterConfig
+metadata:
+  name: workload-cp
+  namespace: fleet-default
+clusterName: workload
+cpuCount: "2"
+diskSize: "20"
+imageName: default/image-2qvbl
+memorySize: "4"
+networkName: default/vlan-mgmt
+networkData: |-
+    version: 2
+    ethernets:
+      enp1s0:
+        dhcp4: false
+        addresses:
+          - 192.168.1.3/24
+        routes:
+          - to: default
+            via: 192.168.1.1
+        nameservers:
+          addresses:
+            - 8.8.8.8
+            - 1.1.1.1
+sshUser: ubuntu
+userData: |-
+    #cloud-config
+    users:
+      - name: ubuntu
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTQ5MYDuaMXG4FmXU28gVx8uQKBHn6oK1IBQxgUFTaGKGle0o7/B2ufC0kkGJKWW+/ETGtwZJMeyy2Mmmtxiyl/P7JHisROr7/6aQ9aHT7f4hTVMnJGOTucNAjhwHPDHclRzV+Gk0O+cGKTS54MRmIj+uGvm3s0K2WbAgOj1BUUg8CFzHAGftt9Zd77DO5wBthkp8rbwtc7aB11vq1Ei9NNflH/a8rjZL04YBtjZVhyRsVYiVlvh5QDzByp4gFuxovpxybpzGhf282j9dQR0BPFFRbPgrDaijbhkFHe9mcdv7XQknSA4okzmNmcsPpD9QvUlE8R6ff7sOghS2MjwSSaeZzTdGN3mua1r5ihaGLZoOzjni4jW/QL1AfHHENHitiC563unJA51fjHKP+HJTsj76c7FgdUxVMVK9CLMn5Rt1R8TM9dIbaksrZwGShsr0Z7dl2zib5Gw5W8/metb6BK4W6nUDauo1rx8eNSwc0ksKOletJiR3uHqWvoynmlXU=
+    chpasswd:
+      list: |
+        ubuntu:harvester
+      expire: false
+    packages:
+      - qemu-guest-agent
+    runcmd:
+      - systemctl enable --now qemu-guest-agent
+---
+apiVersion: provisioning.cattle.io/v1
+kind: Cluster
+metadata:
+  name: workload
+  namespace: fleet-default
+spec:
+  kubernetesVersion: v1.32.4+k3s1
+  rkeConfig:
+    machineGlobalConfig:
+      tls-san:
+        - 51.38.122.164
+        - 192.168.1.3
+    machinePools:
+      - name: cp-pool
+        controlPlaneRole: true
+        etcdRole: true
+        workerRole: true
+        quantity: 1
+        cloudCredentialSecretName: cattle-global-data:cc-676zt
+        machineConfigRef:
+          apiVersion: rke-machine-config.cattle.io/v1
+          kind: HarvesterConfig
+          name: workload-cp

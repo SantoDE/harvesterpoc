@@ -5,7 +5,7 @@ metadata:
 spec:
   ranges:
     - subnet: 51.38.122.160/29
-      rangeStart: 51.38.122.164
+      rangeStart: 51.38.122.163
       rangeEnd: 51.38.122.165
       gateway: 51.38.122.166
   selector:

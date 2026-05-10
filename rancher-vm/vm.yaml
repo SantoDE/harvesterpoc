@@ -5,6 +5,7 @@ metadata:
   namespace: default
   labels:
     harvesterhci.io/creator: harvester
+    app: rancher
   annotations:
     harvesterhci.io/volumeClaimTemplates: '[{"metadata":{"name":"rancher-disk-0","annotations":{"harvesterhci.io/imageId":"default/image-2qvbl"}},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"20Gi"}},"volumeMode":"Block","storageClassName":"longhorn-image-2qvbl"}}]'
     network.harvesterhci.io/ips: '[]'

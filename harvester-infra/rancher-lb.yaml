@@ -1,0 +1,27 @@
+apiVersion: loadbalancer.harvesterhci.io/v1beta1
+kind: LoadBalancer
+metadata:
+  name: rancher
+  namespace: default
+spec:
+  workloadType: vm
+  ipam: pool
+  ipPool: public-ip-pool
+  listeners:
+    - name: https
+      port: 443
+      protocol: TCP
+      backendPort: 443
+    - name: http
+      port: 80
+      protocol: TCP
+      backendPort: 80
+  healthCheck:
+    port: 443
+    successThreshold: 1
+    failureThreshold: 3
+    periodSeconds: 10
+    timeoutSeconds: 5
+  backendServerSelector:
+    app:
+      - rancher
