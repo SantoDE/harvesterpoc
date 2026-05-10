@@ -1,0 +1,93 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: rancher
+  namespace: default
+  labels:
+    harvesterhci.io/creator: harvester
+  annotations:
+    harvesterhci.io/volumeClaimTemplates: '[{"metadata":{"name":"rancher-disk-0","annotations":{"harvesterhci.io/imageId":"default/image-2qvbl"}},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"20Gi"}},"volumeMode":"Block","storageClassName":"longhorn-image-2qvbl"}}]'
+    network.harvesterhci.io/ips: '[]'
+spec:
+  running: true
+  template:
+    metadata:
+      annotations:
+        harvesterhci.io/sshNames: '["default/personal"]'
+    spec:
+      domain:
+        cpu:
+          cores: 2
+          sockets: 1
+          threads: 1
+        memory:
+          guest: 4Gi
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: 500m
+            memory: 2730Mi
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk-0
+          - disk:
+              bus: virtio
+            name: cloudinit
+          interfaces:
+          - name: nic-mgmt
+            model: virtio
+            bridge: {}
+      evictionStrategy: LiveMigrateIfPossible
+      hostname: rancher
+      networks:
+      - name: nic-mgmt
+        multus:
+          networkName: vlan-mgmt
+      volumes:
+      - dataVolume:
+          name: rancher-disk-0
+        name: disk-0
+      - cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            hostname: rancher
+            users:
+              - name: ubuntu
+                sudo: ALL=(ALL) NOPASSWD:ALL
+                shell: /bin/bash
+                ssh_authorized_keys:
+                  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTQ5MYDuaMXG4FmXU28gVx8uQKBHn6oK1IBQxgUFTaGKGle0o7/B2ufC0kkGJKWW+/ETGtwZJMeyy2Mmmtxiyl/P7JHisROr7/6aQ9aHT7f4hTVMnJGOTucNAjhwHPDHclRzV+Gk0O+cGKTS54MRmIj+uGvm3s0K2WbAgOj1BUUg8CFzHAGftt9Zd77DO5wBthkp8rbwtc7aB11vq1Ei9NNflH/a8rjZL04YBtjZVhyRsVYiVlvh5QDzByp4gFuxovpxybpzGhf282j9dQR0BPFFRbPgrDaijbhkFHe9mcdv7XQknSA4okzmNmcsPpD9QvUlE8R6ff7sOghS2MjwSSaeZzTdGN3mua1r5ihaGLZoOzjni4jW/QL1AfHHENHitiC563unJA51fjHKP+HJTsj76c7FgdUxVMVK9CLMn5Rt1R8TM9dIbaksrZwGShsr0Z7dl2zib5Gw5W8/metb6BK4W6nUDauo1rx8eNSwc0ksKOletJiR3uHqWvoynmlXU=
+            write_files:
+              - path: /etc/netplan/99-static.yaml
+                owner: root:root
+                permissions: '0600'
+                content: |
+                  network:
+                    version: 2
+                    ethernets:
+                      enp1s0:
+                        dhcp4: false
+                        addresses:
+                          - 51.38.122.163/29
+                        routes:
+                          - to: default
+                            via: 51.38.122.166
+                        nameservers:
+                          addresses:
+                            - 8.8.8.8
+                            - 1.1.1.1
+            runcmd:
+              - netplan apply
+              - curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--tls-san=51.38.122.163 --write-kubeconfig-mode=644" sh -
+              - until kubectl get nodes | grep -q " Ready"; do sleep 5; done
+              - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+              - kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
+              - until kubectl -n cert-manager rollout status deployment/cert-manager-webhook --timeout=300s; do sleep 10; done
+              - helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+              - helm repo update
+              - helm install rancher rancher-latest/rancher -n cattle-system --create-namespace --set hostname=rancher.51.38.122.163.sslip.io --set bootstrapPassword=admin --set replicas=1
+        name: cloudinit
