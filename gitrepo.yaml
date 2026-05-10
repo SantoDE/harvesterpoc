@@ -11,5 +11,7 @@ metadata:
 spec:
   repo: https://github.com/SantoDE/harvesterpoc
   branch: main
+  paths:
+    - rancher-vm
   targets:
     - clusterSelector: {}
