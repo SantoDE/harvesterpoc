@@ -37,11 +37,11 @@ spec:
     name: harvester-kubeconfig
   loadBalancerConfig:
     ipamType: pool
-    ipPoolRef: capi-pool
+    ipPoolRef: public-ip-pool
   vmNetworkConfig:
     gateway: 51.38.122.166
     subnetMask: 255.255.255.248
-    ipPoolRef: capi-pool
+    ipPoolRef: public-ip-pool
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster

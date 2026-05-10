@@ -1,7 +1,7 @@
 apiVersion: networking.harvesterhci.io/v1beta1
 kind: IPPool
 metadata:
-  name: capi-pool
+  name: public-ip-pool
   namespace: default
 spec:
   ranges:
