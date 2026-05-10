@@ -1,1 +1,3 @@
 defaultNamespace: cattle-capi-system
+helm:
+  takeOwnership: true
