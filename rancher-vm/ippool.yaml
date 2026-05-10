@@ -1,0 +1,12 @@
+apiVersion: networking.harvesterhci.io/v1beta1
+kind: IPPool
+metadata:
+  name: capi-pool
+  namespace: default
+spec:
+  ranges:
+    - subnet: 51.38.122.160/29
+      rangeStart: 51.38.122.164
+      rangeEnd: 51.38.122.165
+  selector:
+    network: default/vlan-mgmt
