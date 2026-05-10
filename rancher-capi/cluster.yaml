@@ -81,6 +81,10 @@ spec:
       kind: HarvesterMachineTemplate
       name: workload-cp-machine
       namespace: default
+  rolloutStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
   serverConfig:
     tlsSan:
       - 51.38.122.164
