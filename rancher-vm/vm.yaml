@@ -52,6 +52,6 @@ spec:
           name: rancher-disk-0
         name: disk-0
       - cloudInitNoCloud:
-          userDataSecretRef:
+          secretRef:
             name: rancher-cloudinit
         name: cloudinit
