@@ -16,7 +16,7 @@ spec:
       annotations:
         harvesterhci.io/sshNames: '["default/personal"]'
       labels:
-        app: rancher
+        App: rancher
     spec:
       domain:
         cpu:
