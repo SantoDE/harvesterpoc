@@ -46,7 +46,7 @@ userData: |-
       - until ping -c1 8.8.8.8 &>/dev/null; do sleep 2; done
       - apt-get update -y
       - apt-get install -y qemu-guest-agent
-      - systemctl enable --now qemu-guest-agent
+      - systemctl start qemu-guest-agent
 ---
 apiVersion: provisioning.cattle.io/v1
 kind: Cluster
