@@ -44,6 +44,7 @@ userData: |-
         permissions: '0644'
     runcmd:
       - until ping -c1 8.8.8.8 &>/dev/null; do sleep 2; done
+      - apt-get update -y
       - apt-get install -y qemu-guest-agent
       - systemctl enable --now qemu-guest-agent
 ---
