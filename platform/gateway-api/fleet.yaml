@@ -1,4 +1,3 @@
 defaultNamespace: kube-system
-kustomize: {}
 targets:
   - clusterName: rke2-test

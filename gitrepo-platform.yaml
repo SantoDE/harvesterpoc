@@ -11,6 +11,7 @@ spec:
     - platform/traefik
     - platform/dapr
     - platform/redis
+    - platform/knative-crds
     - platform/knative
     - platform/knative-config
   targets:
