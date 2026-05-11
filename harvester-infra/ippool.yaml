@@ -3,6 +3,8 @@ kind: IPPool
 metadata:
   name: public-ip-pool
 spec:
+  selector:
+    project: c-t5jzt/p-dh8x5
   ranges:
     - subnet: 51.38.122.160/29
       rangeStart: 51.38.122.164
