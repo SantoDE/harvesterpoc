@@ -4,7 +4,10 @@ metadata:
   name: public-ip-pool
 spec:
   selector:
-    project: c-t5jzt/p-dh8x5
+    scope:
+      - guestCluster: kubernetes
+        project: c-t5jzt/p-dh8x5
+        namespace: default
   ranges:
     - subnet: 51.38.122.160/29
       rangeStart: 51.38.122.164
