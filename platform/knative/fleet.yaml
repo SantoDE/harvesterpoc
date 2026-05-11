@@ -2,6 +2,3 @@ defaultNamespace: knative-serving
 kustomize: {}
 targets:
   - clusterName: rke2-test
-dependsOn:
-  - name: harvesterpoc-platform-gateway-api
-  - name: harvesterpoc-platform-traefik

@@ -20,5 +20,3 @@ helm:
       namespaced: false
 targets:
   - clusterName: rke2-test
-dependsOn:
-  - name: harvesterpoc-platform-gateway-api
