@@ -15,6 +15,8 @@ spec:
     metadata:
       annotations:
         harvesterhci.io/sshNames: '["default/personal"]'
+      labels:
+        app: rancher
     spec:
       domain:
         cpu:
