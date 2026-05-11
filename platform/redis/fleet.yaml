@@ -1,0 +1,11 @@
+defaultNamespace: redis
+helm:
+  repo: https://charts.bitnami.com/bitnami
+  chart: redis
+  releaseName: redis
+  values:
+    architecture: standalone
+    auth:
+      enabled: false
+targets:
+  - clusterName: rke2-test

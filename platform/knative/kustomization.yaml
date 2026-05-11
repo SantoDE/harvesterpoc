@@ -1,0 +1,4 @@
+resources:
+  - https://github.com/knative/serving/releases/download/knative-v1.16.0/serving-crds.yaml
+  - https://github.com/knative/serving/releases/download/knative-v1.16.0/serving-core.yaml
+  - https://github.com/knative-extensions/net-gateway-api/releases/download/knative-v1.16.0/release.yaml

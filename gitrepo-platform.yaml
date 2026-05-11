@@ -1,0 +1,17 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: harvesterpoc-platform
+  namespace: fleet-default
+spec:
+  repo: https://github.com/SantoDE/harvesterpoc
+  branch: main
+  paths:
+    - platform/gateway-api
+    - platform/traefik
+    - platform/dapr
+    - platform/redis
+    - platform/knative
+    - platform/knative-config
+  targets:
+    - clusterName: rke2-test

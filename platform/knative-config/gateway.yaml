@@ -1,0 +1,33 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: knative-gateway
+  namespace: knative-serving
+spec:
+  gatewayClassName: traefik
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-gateway
+  namespace: knative-serving
+data:
+  external-gateways: |
+    - class: traefik
+      gateway: knative-serving/knative-gateway
+      service: traefik-system/traefik
+      supported-features:
+        - HTTPRouteRequestTimeout
+        - HTTPRouteBackendTimeout
+        - HTTPRouteResponseHeaderModification
+  local-gateways: |
+    - class: traefik
+      gateway: knative-serving/knative-local-gateway
+      service: traefik-system/traefik

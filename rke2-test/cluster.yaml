@@ -61,6 +61,8 @@ spec:
       tls-san:
         - 192.168.1.20
       cloud-provider-name: harvester
+      disable:
+        - rke2-ingress-nginx
     machineSelectorConfig:
       - config:
           protect-kernel-defaults: false

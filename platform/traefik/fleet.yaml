@@ -1,0 +1,24 @@
+defaultNamespace: traefik-system
+helm:
+  repo: https://traefik.io/charts
+  chart: traefik
+  releaseName: traefik
+  values:
+    providers:
+      kubernetesIngress:
+        enabled: true
+      kubernetesGateway:
+        enabled: true
+    gatewayClass:
+      enabled: true
+      name: traefik
+    service:
+      annotations:
+        cloudprovider.harvesterhci.io/ipam: pool
+    rbac:
+      enabled: true
+      namespaced: false
+targets:
+  - clusterName: rke2-test
+dependsOn:
+  - name: harvesterpoc-platform-gateway-api
