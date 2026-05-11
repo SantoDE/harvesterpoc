@@ -59,7 +59,7 @@ spec:
         etcdRole: true
         workerRole: true
         quantity: 1
-        cloudCredentialSecretName: cattle-global-data:cc-676zt
+        cloudCredentialSecretName: cattle-global-data:cc-8ljnf
         machineConfigRef:
           apiVersion: rke-machine-config.cattle.io/v1
           kind: HarvesterConfig
