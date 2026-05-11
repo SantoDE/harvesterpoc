@@ -8,7 +8,7 @@ spec:
   branch: main
   paths:
     - platform/gateway-api
-    - platform/traefik
+    - platform/traefik-config
     - platform/dapr
     - platform/redis
     - platform/knative-crds

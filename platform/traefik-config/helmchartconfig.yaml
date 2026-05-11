@@ -1,12 +1,11 @@
-defaultNamespace: traefik-system
-helm:
-  repo: https://helm.traefik.io/traefik
-  chart: traefik
-  releaseName: traefik
-  values:
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: rke2-traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
     providers:
-      kubernetesIngress:
-        enabled: true
       kubernetesGateway:
         enabled: true
     gatewayClass:
@@ -18,5 +17,3 @@ helm:
     rbac:
       enabled: true
       namespaced: false
-targets:
-  - clusterName: rke2-test
