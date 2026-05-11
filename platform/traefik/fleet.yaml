@@ -1,6 +1,6 @@
 defaultNamespace: traefik-system
 helm:
-  repo: https://traefik.io/charts
+  repo: https://helm.traefik.io/traefik
   chart: traefik
   releaseName: traefik
   values:
