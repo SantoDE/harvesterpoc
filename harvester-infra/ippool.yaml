@@ -8,5 +8,3 @@ spec:
       rangeStart: 51.38.122.164
       rangeEnd: 51.38.122.165
       gateway: 51.38.122.166
-  selector:
-    network: default/vlan-mgmt
