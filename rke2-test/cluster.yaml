@@ -4,10 +4,10 @@ metadata:
   name: rke2-test-cp
   namespace: fleet-default
 clusterName: rke2-test
-cpuCount: "2"
+cpuCount: "4"
 diskSize: "20"
 imageName: default/image-2qvbl
-memorySize: "4"
+memorySize: "8"
 networkName: default/vlan-mgmt
 networkData: |-
     version: 2
