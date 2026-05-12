@@ -54,15 +54,15 @@ metadata:
   name: rke2-test
   namespace: fleet-default
 spec:
-  kubernetesVersion: v1.32.4+rke2r1
+  kubernetesVersion: v1.33.0+rke2r1
   cloudCredentialSecretName: cattle-global-data:cc-8ljnf
   rkeConfig:
     machineGlobalConfig:
       tls-san:
         - 192.168.1.20
       cloud-provider-name: harvester
-      disable:
-        - rke2-ingress-nginx
+      ingress-controller:
+        - traefik
     machineSelectorConfig:
       - config:
           protect-kernel-defaults: false
