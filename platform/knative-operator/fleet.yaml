@@ -3,3 +3,11 @@ helm:
   disablePreprocess: true
 targets:
   - clusterName: rke2-test
+diff:
+  comparePatches:
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: knative-serving-operator-aggregated-stable
+      operations:
+        - op: remove
+          path: /rules
