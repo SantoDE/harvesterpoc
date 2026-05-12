@@ -7,8 +7,9 @@ spec:
   valuesContent: |-
     experimental:
       knative: true
+    additionalArguments:
+      - "--providers.knative"
     providers:
-      knative: {}
       kubernetesGateway:
         enabled: true
     gatewayClass:
