@@ -25,3 +25,7 @@ spec:
       namespaced: false
     crds:
       enabled: false
+    ports:
+      websecure:
+        expose:
+          default: false
