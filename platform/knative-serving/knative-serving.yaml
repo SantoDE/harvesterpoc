@@ -5,6 +5,11 @@ metadata:
   namespace: knative-serving
 spec:
   version: "1.16"
+  ingress:
+    istio:
+      enabled: false
+    kourier:
+      enabled: false
   config:
     network:
       ingress-class: "gateway-api.ingress.networking.knative.dev"
