@@ -1,8 +1,7 @@
 defaultNamespace: knative-serving
 helm:
   disablePreprocess: true
-targets:
-  - clusterName: rke2-test
+targets: []
 dependsOn:
   - name: harvesterpoc-platform-platform-knative-serving
   - name: harvesterpoc-platform-platform-traefik-config
