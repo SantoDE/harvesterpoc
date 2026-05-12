@@ -17,3 +17,5 @@ spec:
     rbac:
       enabled: true
       namespaced: false
+    crds:
+      enabled: false
