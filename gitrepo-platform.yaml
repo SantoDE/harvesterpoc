@@ -7,7 +7,6 @@ spec:
   repo: https://github.com/SantoDE/harvesterpoc
   branch: main
   paths:
-    - platform/gateway-api
     - platform/traefik-config
     - platform/dapr
     - platform/redis
