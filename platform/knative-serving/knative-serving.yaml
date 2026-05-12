@@ -27,6 +27,6 @@ spec:
           gateway: knative-serving/knative-local-gateway
           service: kube-system/traefik
     config-domain:
-      51.38.122.165.sslip.io: ""
+      51.38.122.164.sslip.io: ""
     config-observability:
       metrics.backend-destination: none
