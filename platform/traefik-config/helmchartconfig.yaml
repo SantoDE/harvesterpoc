@@ -11,6 +11,10 @@ spec:
     gatewayClass:
       enabled: true
       name: traefik
+    gateway:
+      listeners:
+        web:
+          namespacePolicy: All
     service:
       type: LoadBalancer
       annotations:
