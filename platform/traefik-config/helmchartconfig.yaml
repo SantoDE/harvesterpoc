@@ -5,7 +5,10 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
+    experimental:
+      knative: true
     providers:
+      knative: {}
       kubernetesGateway:
         enabled: true
     gatewayClass:

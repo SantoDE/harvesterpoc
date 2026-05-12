@@ -12,20 +12,7 @@ spec:
       enabled: false
   config:
     network:
-      ingress-class: "gateway-api.ingress.networking.knative.dev"
-    config-gateway:
-      external-gateways: |
-        - class: traefik
-          gateway: kube-system/traefik-gateway
-          service: kube-system/rke2-traefik
-          supported-features:
-          - HTTPRouteRequestTimeout
-          - HTTPRouteBackendTimeout
-          - HTTPRouteResponseHeaderModification
-      local-gateways: |
-        - class: traefik
-          gateway: knative-serving/knative-local-gateway
-          service: kube-system/rke2-traefik
+      ingress-class: "traefik.ingress.networking.knative.dev"
     config-domain:
       51.38.122.164.sslip.io: ""
     config-observability:
