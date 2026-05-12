@@ -9,6 +9,9 @@ spec:
       knative: true
     additionalArguments:
       - "--providers.knative"
+      - "--providers.knative.publicentrypoints=web"
+      - "--providers.knative.publicservice.name=rke2-traefik"
+      - "--providers.knative.publicservice.namespace=kube-system"
     providers:
       kubernetesGateway:
         enabled: true
