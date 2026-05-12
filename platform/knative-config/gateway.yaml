@@ -31,3 +31,11 @@ data:
     - class: traefik
       gateway: knative-serving/knative-local-gateway
       service: traefik-system/traefik
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-observability
+  namespace: knative-serving
+data:
+  metrics.backend-destination: none
