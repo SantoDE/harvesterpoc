@@ -17,7 +17,7 @@ spec:
       external-gateways: |
         - class: traefik
           gateway: kube-system/traefik-gateway
-          service: kube-system/traefik
+          service: kube-system/rke2-traefik
           supported-features:
           - HTTPRouteRequestTimeout
           - HTTPRouteBackendTimeout
@@ -25,8 +25,10 @@ spec:
       local-gateways: |
         - class: traefik
           gateway: knative-serving/knative-local-gateway
-          service: kube-system/traefik
+          service: kube-system/rke2-traefik
     config-domain:
       51.38.122.164.sslip.io: ""
     config-observability:
       metrics.backend-destination: none
+    config-autoscaler:
+      target-burst-capacity: "0"
