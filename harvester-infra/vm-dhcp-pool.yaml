@@ -1,0 +1,18 @@
+apiVersion: network.harvesterhci.io/v1alpha1
+kind: IPPool
+metadata:
+  name: vlan-mgmt-dhcp
+  namespace: default
+spec:
+  ipv4Config:
+    serverIP: 192.168.1.50
+    cidr: 192.168.1.0/24
+    pool:
+      start: 192.168.1.100
+      end: 192.168.1.200
+    router: 192.168.1.1
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    leaseTime: 300
+  networkName: default/vlan-mgmt

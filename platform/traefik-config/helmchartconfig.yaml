@@ -12,6 +12,7 @@ spec:
       enabled: true
       name: traefik
     service:
+      type: LoadBalancer
       annotations:
         cloudprovider.harvesterhci.io/ipam: pool
     rbac:

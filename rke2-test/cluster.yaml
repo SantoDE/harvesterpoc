@@ -13,16 +13,7 @@ networkData: |-
     version: 2
     ethernets:
       enp1s0:
-        dhcp4: false
-        addresses:
-          - 192.168.1.20/24
-        routes:
-          - to: default
-            via: 192.168.1.1
-        nameservers:
-          addresses:
-            - 8.8.8.8
-            - 1.1.1.1
+        dhcp4: true
 sshUser: ubuntu
 userData: |-
     #cloud-config
@@ -61,7 +52,7 @@ spec:
   rkeConfig:
     machineGlobalConfig:
       tls-san:
-        - 192.168.1.20
+        - 51.38.122.164
       cloud-provider-name: harvester
       disable:
         - rke2-ingress-nginx
