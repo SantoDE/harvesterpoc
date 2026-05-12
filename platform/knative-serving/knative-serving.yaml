@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-serving
+---
+apiVersion: operator.knative.dev/v1beta1
+kind: KnativeServing
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+spec:
+  version: "1.16"
+  ingress:
+    kourier:
+      enabled: false
+    net-gateway-api:
+      enabled: true
+  additionalManifests:
+    - https://github.com/knative-extensions/net-gateway-api/releases/download/knative-v1.16.0/release.yaml

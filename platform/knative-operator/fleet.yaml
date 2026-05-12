@@ -1,0 +1,5 @@
+defaultNamespace: default
+helm:
+  disablePreprocess: true
+targets:
+  - clusterName: rke2-test

@@ -2,5 +2,5 @@ defaultNamespace: knative-serving
 targets:
   - clusterName: rke2-test
 dependsOn:
-  - name: harvesterpoc-platform-platform-knative
+  - name: harvesterpoc-platform-platform-knative-serving
   - name: harvesterpoc-platform-platform-traefik-config

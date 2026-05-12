@@ -2,4 +2,4 @@ defaultNamespace: knative-serving
 targets:
   - clusterName: rke2-test
 dependsOn:
-  - name: harvesterpoc-platform-platform-gateway-api
+  - name: harvesterpoc-platform-platform-knative-operator

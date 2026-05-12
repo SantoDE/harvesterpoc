@@ -11,7 +11,8 @@ spec:
     - platform/traefik-config
     - platform/dapr
     - platform/redis
-    - platform/knative
+    - platform/knative-operator
+    - platform/knative-serving
     - platform/knative-config
   targets:
     - clusterName: rke2-test
