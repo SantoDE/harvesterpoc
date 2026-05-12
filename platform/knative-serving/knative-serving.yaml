@@ -10,10 +10,6 @@ metadata:
   namespace: knative-serving
 spec:
   version: "1.16"
-  ingress:
-    kourier:
-      enabled: false
-    net-gateway-api:
-      enabled: true
-  additionalManifests:
-    - https://github.com/knative-extensions/net-gateway-api/releases/download/knative-v1.16.0/release.yaml
+  config:
+    network:
+      ingress-class: "gateway-api.ingress.networking.knative.dev"
