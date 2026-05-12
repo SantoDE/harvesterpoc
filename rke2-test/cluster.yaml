@@ -47,6 +47,8 @@ userData: |-
       - apt-get update -y
       - apt-get install -y qemu-guest-agent
       - systemctl start qemu-guest-agent
+      - mkdir -p /var/lib/rancher/rke2/etc/config-files
+      - ln -sf /etc/kubernetes/cloud-config /var/lib/rancher/rke2/etc/config-files/cloud-provider-config
 ---
 apiVersion: provisioning.cattle.io/v1
 kind: Cluster
