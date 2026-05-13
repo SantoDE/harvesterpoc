@@ -12,6 +12,7 @@ helm:
       cableDriver: "libreswan"
     broker:
       namespace: "submariner-k8s-broker"
+      insecure: true
   valuesFrom:
     - secretKeyRef:
         name: submariner-broker-secret
