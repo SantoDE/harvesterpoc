@@ -7,11 +7,9 @@ spec:
   repo: https://github.com/SantoDE/harvesterpoc
   branch: main
   paths:
-    - platform/traefik-config
     - platform/dapr
     - platform/redis
     - platform/knative-operator
-    - platform/knative-serving
     - platform/knative-config
     - platform/submariner-broker
     - platform/submariner-operator
