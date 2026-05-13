@@ -1,0 +1,8 @@
+defaultNamespace: knative-serving
+helm:
+  disablePreprocess: true
+targets:
+  - clusterName: c-rxv24
+dependsOn:
+  - name: harvesterpoc-platform-platform-knative-operator
+  - name: harvesterpoc-platform-platform-traefik

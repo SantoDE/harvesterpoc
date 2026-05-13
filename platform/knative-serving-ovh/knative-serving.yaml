@@ -1,0 +1,23 @@
+apiVersion: operator.knative.dev/v1beta1
+kind: KnativeServing
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+spec:
+  version: "1.16"
+  ingress:
+    istio:
+      enabled: false
+    kourier:
+      enabled: false
+  config:
+    network:
+      ingress-class: "traefik.ingress.networking.knative.dev"
+    config-domain:
+      # Replace with actual OVH Traefik LB IP once deployed:
+      # kubectl get svc -n traefik traefik -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+      TO_BE_UPDATED.sslip.io: ""
+    config-observability:
+      metrics.backend-destination: none
+    config-autoscaler:
+      target-burst-capacity: "0"

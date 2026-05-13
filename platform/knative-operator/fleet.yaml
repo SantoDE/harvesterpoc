@@ -3,6 +3,7 @@ helm:
   disablePreprocess: true
 targets:
   - clusterName: rke2-test
+  - clusterName: c-rxv24
 diff:
   comparePatches:
     - apiVersion: rbac.authorization.k8s.io/v1

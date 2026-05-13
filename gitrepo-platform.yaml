@@ -15,6 +15,8 @@ spec:
     - platform/knative-config
     - platform/submariner-broker
     - platform/submariner-operator
+    - platform/traefik
+    - platform/knative-serving-ovh
   targets:
     - clusterName: rke2-test
     - clusterName: c-rxv24

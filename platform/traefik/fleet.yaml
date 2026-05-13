@@ -1,0 +1,21 @@
+defaultNamespace: traefik
+helm:
+  repo: https://helm.releases.traefik.io
+  chart: traefik
+  releaseName: traefik
+  values:
+    experimental:
+      knative: true
+    additionalArguments:
+      - "--providers.knative"
+      - "--providers.knative.publicentrypoints=web"
+      - "--providers.knative.publicservice.name=traefik"
+      - "--providers.knative.publicservice.namespace=traefik"
+    ports:
+      websecure:
+        expose:
+          default: false
+    rbac:
+      enabled: true
+targets:
+  - clusterName: c-rxv24
