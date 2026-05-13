@@ -1,5 +1,7 @@
 defaultNamespace: knative-serving
 targets:
-  - clusterName: rke2-test
+  - clusterSelector:
+      matchLabels:
+        provider.cattle.io: rke2
 dependsOn:
   - name: harvesterpoc-platform-platform-knative-operator

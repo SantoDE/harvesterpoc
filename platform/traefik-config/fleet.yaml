@@ -1,3 +1,5 @@
 defaultNamespace: kube-system
 targets:
-  - clusterName: rke2-test
+  - clusterSelector:
+      matchLabels:
+        provider.cattle.io: rke2
