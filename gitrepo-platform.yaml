@@ -17,3 +17,4 @@ spec:
     - platform/submariner-operator
   targets:
     - clusterName: rke2-test
+    - clusterName: c-rxv24

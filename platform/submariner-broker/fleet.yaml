@@ -4,4 +4,4 @@ helm:
   chart: submariner-k8s-broker
   releaseName: submariner-k8s-broker
 targets:
-  - clusterName: rke2-test
+  - clusterName: c-rxv24
