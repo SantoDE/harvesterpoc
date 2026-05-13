@@ -11,8 +11,9 @@ CONTEXT="${1:-rke2-test}"
 BROKER_NS="submariner-k8s-broker"
 OPERATOR_NS="submariner-operator"
 SECRET_NAME="submariner-broker-secret"
-# No https:// prefix — Submariner prepends it automatically
-BROKER_SERVER="rancher.51.38.122.163.sslip.io/k8s/clusters/c-m-ftdl6btr"
+# Use in-cluster kubernetes service — rke2-test API is not externally reachable.
+# When joining a second cluster, this needs to be a reachable external endpoint.
+BROKER_SERVER="kubernetes.default.svc"
 
 kube() { kubectl --context "$CONTEXT" "$@"; }
 
@@ -39,7 +40,5 @@ kube create secret generic "$SECRET_NAME" \
   insecure: true
 ipsec:
   psk: \"${PSK}\""
-# Note: broker.server must NOT include the https:// scheme prefix.
-# Submariner prepends https:// automatically.
 
 echo "Done. Secret ${SECRET_NAME} created in ${OPERATOR_NS}."
