@@ -1,0 +1,7 @@
+defaultNamespace: submariner-k8s-broker
+helm:
+  repo: https://releases.rancher.com/submariner-charts/latest
+  chart: submariner-k8s-broker
+  releaseName: submariner-k8s-broker
+targets:
+  - clusterName: rke2-test

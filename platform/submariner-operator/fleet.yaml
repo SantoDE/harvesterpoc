@@ -1,0 +1,22 @@
+defaultNamespace: submariner-operator
+helm:
+  repo: https://releases.rancher.com/submariner-charts/latest
+  chart: submariner-operator
+  releaseName: submariner-operator
+  values:
+    submariner:
+      clusterId: "rke2-test"
+      clusterCidr: "10.42.0.0/16"
+      serviceCidr: "10.43.0.0/16"
+      natEnabled: true
+      cableDriver: "libreswan"
+    broker:
+      namespace: "submariner-k8s-broker"
+  valuesFrom:
+    - secretKeyRef:
+        name: submariner-broker-secret
+        namespace: submariner-operator
+targets:
+  - clusterName: rke2-test
+dependsOn:
+  - name: harvesterpoc-platform-platform-submariner-broker
