@@ -16,7 +16,7 @@ targets:
   - clusterName: c-rxv24
     values:
       submariner:
-        clusterId: "ovh-test"
+        clusterID: "ovh-test"
         clusterCidr: "10.2.0.0/16"
         serviceCidr: "10.3.0.0/16"
         natEnabled: false
@@ -25,7 +25,7 @@ targets:
   - clusterName: rke2-test
     values:
       submariner:
-        clusterId: "rke2-test"
+        clusterID: "rke2-test"
         clusterCidr: "10.42.0.0/16"
         serviceCidr: "10.43.0.0/16"
         natEnabled: true
