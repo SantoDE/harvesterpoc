@@ -1,6 +1,6 @@
 defaultNamespace: submariner-k8s-broker
 helm:
-  repo: https://releases.rancher.com/submariner-charts/latest
+  repo: https://submariner-io.github.io/submariner-charts/charts
   chart: submariner-k8s-broker
   releaseName: submariner-k8s-broker
 targets:
