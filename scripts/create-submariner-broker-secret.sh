@@ -83,7 +83,7 @@ kube create secret generic "$SECRET_NAME" \
 ipsec:
   psk: \"${PSK}\"
 submariner:
-  clusterID: ${CLUSTER_ID}
+  clusterId: ${CLUSTER_ID}
   clusterCidr: ${CLUSTER_CIDR}
   serviceCidr: ${SERVICE_CIDR}
   natEnabled: ${NAT_ENABLED}
