@@ -3,33 +3,12 @@ helm:
   repo: https://submariner-io.github.io/submariner-charts/charts
   chart: submariner-operator
   releaseName: submariner-operator
-  values:
-    submariner:
-      cableDriver: "libreswan"
-    broker:
-      namespace: "submariner-k8s-broker"
   valuesFrom:
     - secretKeyRef:
         name: submariner-broker-secret
         namespace: submariner-operator
 targets:
   - clusterName: c-rxv24
-    values:
-      submariner:
-        clusterID: "ovh-test"
-        clusterCidr: "10.2.0.0/16"
-        serviceCidr: "10.3.0.0/16"
-        natEnabled: false
-      broker:
-        server: kubernetes.default.svc
   - clusterName: rke2-test
-    values:
-      submariner:
-        clusterID: "rke2-test"
-        clusterCidr: "10.42.0.0/16"
-        serviceCidr: "10.43.0.0/16"
-        natEnabled: true
-      broker:
-        server: tszdbs.c1.de1.k8s.ovh.net
 dependsOn:
   - name: harvesterpoc-platform-platform-submariner-broker
