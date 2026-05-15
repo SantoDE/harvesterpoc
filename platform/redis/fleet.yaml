@@ -8,4 +8,4 @@ helm:
     auth:
       enabled: false
 targets:
-  - clusterName: rke2-test
+  - clusterName: c-rxv24
